@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fake News Detector</title>
+    <script src="https://use.fontawesome.com/624fcb6423.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Roboto", Arial, sans-serif;
+            min-height: 100vh;
+            background-color: #d9d9d9;
+        }
+
+        center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Styles for Header and Main Content */
+        header {
+            width: 100%;
+            background-color: #4e4376;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        main {
+            padding-top: 5rem;
+            text-align: center;
+        }
+
+        /* Styles for Result and Summary Boxes */
+        .results {
+            margin-top: 2em;
+        }
+
+        .summary-box {
+            margin-top: 3em;
+            background-color: #f5f5f5;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sentiment {
+            font-size: 24px;
+            line-height: 1.5;
+            color: #333;
+            margin-right: 2em;
+            margin-bottom: 0.8rem;
+        }
+
+        .summary {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #555;
+            background-color: #bbb;
+            border-radius: 0.3rem;
+            padding: 1rem;
+        }
+
+        /* Footer Styles */
+        .site-footer {
+            background-color: #26272b;
+            padding: 45px 0 20px;
+            font-size: 15px;
+            line-height: 24px;
+            color: #737373;
+            text-align: center;
+        }
+
+        .site-footer hr {
+            border-top-color: #bbb;
+            opacity: 0.5;
+        }
+
+        .site-footer h6 {
+            color: #fff;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        .social-icons a {
+            background-color: #eceeef;
+            color: #818a91;
+            font-size: 16px;
+            display: inline-block;
+            line-height: 44px;
+            width: 44px;
+            height: 44px;
+            text-align: center;
+            margin-right: 8px;
+            border-radius: 100%;
+            -webkit-transition: all .2s linear;
+            -o-transition: all .2s linear;
+            transition: all .2s linear;
+        }
+
+        .social-icons a:active,
+        .social-icons a:focus,
+        .social-icons a:hover {
+            color: #fff;
+            background-color: #29aafe;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>News Analysis</h1>
+    </header>
+    <div class="results">
+        {% if prediction== "Real"%}
+        <h2 style="font-family: 'Jost', sans-serif; font-size: 40px;color: #43383e; text-align: center;">This article is Real!
+        </h2>
+        {% elif prediction== "Fake"%}
+        <h2 style="font-family: 'Jost', sans-serif; font-size: 40px;color: #43383e; text-align: center;">This article is Fake!
+        </h2>
+        {% endif %}
+    </div>
+
+    <div class="summary-box">
+        <div class="sentiment">
+            <div> <span style="font-family: 'Jost', sans-serif; font-size: 30px;color: #43383e;">Sentiment: </span><span style="font-size: 30px; color:#43383e;">
+                {{ sentiment }}
+            </span></div>
+        </div>
+        <div class="summary">
+            <h2 style="font-family: 'Jost', sans-serif; font-size: 40px;color: #43383e;">Summarization:</h2>
+            <span>{{ summary }}</span>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
